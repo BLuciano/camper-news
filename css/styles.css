@@ -5,12 +5,32 @@ body{
 h1, h2{
 	text-align: center;
 	color: #fff;
+	font-family: 'Pacifico', cursive;
+}
+h1{
+	font-size: 3em;
+}
+h2{
+	font-size: 2em;
+}
+
+img{
+	width: 100%;
+	height: 200px;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
 }
 
 a{
+	text-align: center;
 	display: block;
 	text-decoration: none;
 	margin-left: 5px;
+	color: #ff3333;
+}
+
+a:hover{
+	color:#990000;
 }
 
 #wrapper{
@@ -41,22 +61,28 @@ a{
 	clear: both;
 }
 
-img{
-	width: 100%;
-	height: 200px;
-}
-
 a:first-child{
 	margin-left: 0px;
 }
 
-button{
+a.discuss{
+	background-color: #cc0000;
+	font-size: .75em;
+	color: #fff;
 	margin-top: 5px;
 	margin-right: 5px;
 	float: right;
 	padding: 7px 10px;
+	border: 1px solid #cc0000;
+	border-radius: 5px;
 }
 
-button:hover{
+a.discuss:hover{
 	cursor: pointer;
+	background-color: #ff4d4d;
+	border: 1px solid black;
 }
+a.discuss:focus{
+	outline: none;
+}
+
