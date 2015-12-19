@@ -1,7 +1,7 @@
 (function(){
 	var xmlhttp = new XMLHttpRequest();
 	var url = "http://www.freecodecamp.com/news/hot";
-	var news = [], message ="", date, day, week, month, year;
+	var news = [], message ="", date, day, week, month, year, headline;
 	var display = document.getElementById("wrapper");
 	var buttons = document.getElementsByTagName("button");
 	
@@ -93,6 +93,8 @@
 			day = date.getDate();
 			month = grabMonth(date.getMonth());
 			year = date.getFullYear();
+			headline = data[i].storyLink.split(" ").join('-').toLowerCase();
+			console.log(headline);
 			message = "";
 			message+= "<div class='story animated fadeInDownBig'>";
 			message+= "<a target='_blank' href='" + data[i].link + "'>";
@@ -101,7 +103,7 @@
   			message+= "<a target='_blank' href='http://www.freecodecamp.com/" + data[i].author.username + "'>";
   			message+= "by - " + data[i].author.username + "</a>";
   			message+= "<p class='upvotes'>&hearts;" + data[i].rank + "</p>";
-  			message+= "<a target='_blank' class='discuss' href='http://www.freecodecamp.com/news/" + data[i].headline + "'>Discuss</a>";
+  			message+= "<a target='_blank' class='discuss' href='http://www.freecodecamp.com/news/" + headline + "'>Discuss</a>";
   			message+= "<p class='date'>Posted on: " + week + ", " + day + " " + month + " " + year + "</p></div>";
 
 			news.push({
