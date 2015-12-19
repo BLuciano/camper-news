@@ -21,7 +21,7 @@
 			displayNews(data);
 		}
 	};
-
+	
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 
@@ -33,7 +33,7 @@
 			month = grabMonth(date.getMonth());
 			year = date.getFullYear();
 			message = "";
-			message+= "<div class='story'>";
+			message+= "<div class='story animated fadeInDownBig'>";
 			message+= "<a target='_blank' href='" + data[i].link + "'>";
 			message+= "<img src='" + data[i].author.picture + "'alt='user image'></a>";
   			message+= "<a class='title' target='_blank' href='" + data[i].link + "'><strong>" + data[i].headline + "</strong></a>";
@@ -53,5 +53,4 @@
 			display.innerHTML += message;
 		}
 	}
-
 }());

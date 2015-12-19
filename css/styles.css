@@ -9,6 +9,7 @@ h1, h2{
 }
 h1{
 	font-size: 3em;
+	margin-bottom: -20px;
 }
 h2{
 	font-size: 2em;
