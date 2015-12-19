@@ -3,7 +3,68 @@
 	var url = "http://www.freecodecamp.com/news/hot";
 	var news = [], message ="", date, day, week, month, year;
 	var display = document.getElementById("wrapper");
+	var buttons = document.getElementsByTagName("button");
+	
+	/*Filters Code Section*/
+	for(var i = 0; i < buttons.length; i++){
+		buttons[i].addEventListener("click", checkFilters);
+	}
 
+	function checkFilters(){
+		var newArry = news.slice();
+		var sortBy;
+		if(this.classList.contains("selected")){
+			return;
+		}
+		
+		for(var i=0; i<buttons.length; i++){
+			buttons[i].classList.remove("selected");
+		}
+		this.classList.toggle('selected');
+
+		if(this.innerHTML === "None"){
+			displayFilterNews(news);
+			return;
+		}
+		if(this.innerHTML === "By Name"){
+			newArry.sort(function(a, b){
+				if(a["name"] < b["name"]){
+					return -1;
+				}
+				if(a["name"] > b["name"]){
+					return 1;
+				}
+			});
+			displayFilterNews(newArry);
+			return;
+		}
+
+		if(this.innerHTML === "Most Recent"){
+			sortBy = "date";
+		}
+		if(this.innerHTML === "Most Upvoted"){
+			sortBy = "upvotes";
+		}
+		newArry.sort(function(a, b){
+			if(a[sortBy] < b[sortBy]){
+				return 1;
+			}
+			if(a[sortBy] > b[sortBy]){
+				return -1;
+			}
+		});
+		displayFilterNews(newArry);
+	} 
+
+	function displayFilterNews(array){
+		display.innerHTML = "";
+		for(var i =0; i < array.length; i++){
+			display.innerHTML+= array[i]["html"];
+		}
+	}
+	//End of Filters section
+
+	//API call and methods setions
 	function grabDate(date){
 		var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 		return days[date];
@@ -52,5 +113,6 @@
 
 			display.innerHTML += message;
 		}
-	}
+	} 
+	//End of API section
 }());
